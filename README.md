@@ -41,43 +41,9 @@ JWT (JSON Web Token) memiliki *time-based claims* yang digunakan untuk mengatur 
 Sistem ini menggunakan **Dual Token Strategy** untuk menyeimbangkan keamanan dan kenyamanan pengguna.
 
 #### Diagram Alur Access Token + Refresh Token
-┌─────────────┐
-│ User Login  │
-└──────┬──────┘
-       │
-       ▼
-┌─────────────────────────────┐
-│ Server Mengirim:            │
-│ - Access Token (30 detik)   │
-│ - Refresh Token (5 menit)   │
-└──────┬──────────────────────┘
-       │
-       ▼
-┌─────────────────────────────┐
-│ User Mengakses API          │
-│ menggunakan Access Token    │
-└──────┬──────────────────────┘
-       │
-       ▼ (Access Token hampir expired)
-┌─────────────────────────────┐
-│ User Request Refresh Token  │
-│ + Verifikasi (HP & Password)│
-└──────┬──────────────────────┘
-       │
-       ▼
-┌─────────────────────────────┐
-│ Server Mengirim             │
-│ Access Token Baru (30 detik)│
-└──────┬──────────────────────┘
-       │
-       ▼
-       Proses Berulang
-       │
-       ▼ (Refresh Token expired)
-┌─────────────────────────────┐
-│ Refresh Token Kadaluarsa    │
-│ User Harus Login Ulang      │
-└─────────────────────────────┘
+
+<img width="272" height="618" alt="image" src="https://github.com/user-attachments/assets/3bd058f5-9a6f-462d-b1ca-2fe890e55aee" />
+
 
 #### Implementasi Token pada Aplikasi
 
